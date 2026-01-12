@@ -1,4 +1,4 @@
-import psl from 'psl';
+import { parse } from 'psl';
 import isUrl from 'is-url';
 
 // Extracts the domain from a given URL.
@@ -6,7 +6,7 @@ export function getDomain(inputUrl: string): string | null {
   try {
     const url = new URL(inputUrl);
     // Use PSL to parse domain names.
-    const parsed = psl.parse(url.hostname);
+    const parsed = parse(url.hostname);
 
     // If domain is available, split it and return the SLD.
     if ('domain' in parsed && parsed.domain) {
